@@ -1,0 +1,42 @@
+.git-projet/
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+.mypy_cache/
+.pytest_cache/
+.cache/
+.venv/
+venv/
+.env
+.env.*
+
+# Node / frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+npm-debug.log*
+yarn-error.log*
+
+# Build / coverage
+dist/
+build/
+coverage/
+
+# Données générées
+data/raw/
+data/processed/
+
+# Logs
+*.log
+
+
