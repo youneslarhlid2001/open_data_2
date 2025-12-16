@@ -69,6 +69,8 @@ npm run dev -- --host --port 5174 --strictPort
 - ✅ `storage.py` : Stockage JSON/Parquet
 - ✅ `main.py` : Orchestration du pipeline
 - ✅ `api.py` : API FastAPI (lancement pipeline, preview, stats, download)
+- ✅ Tests unitaires (pytest)
+- ✅ Dockerfile pour l’API/pipeline
 
 ### Tester rapidement (fetch + pipeline)
 
@@ -122,6 +124,28 @@ Configuration :
 - API cible via `VITE_API_URL` (défaut `http://localhost:8000`)
 - Timeout UI via `VITE_API_TIMEOUT_MS` (défaut 180000 ms pour laisser finir le pipeline)
 - Table (TanStack) + graphes (Recharts)
+
+### 🧪 Tests
+
+```bash
+pytest
+```
+
+Les tests couvrent notamment la transformation / nettoyage (normalisation, déduplication, cast numériques).
+
+### 🐳 Docker (API + pipeline)
+
+Build :
+```bash
+docker build -t openfoodfacts-pipeline .
+```
+
+Run :
+```bash
+docker run -p 8000:8000 openfoodfacts-pipeline
+```
+
+Endpoints disponibles comme en local : `/run`, `/preview`, `/stats`, `/download`, `/health`.
 
 ## 📊 Données récupérées
 

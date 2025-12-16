@@ -2,11 +2,14 @@
 Transformation et nettoyage des données OpenFoodFacts.
 """
 
+import logging
 from typing import List, Dict
 
 import pandas as pd
 
 from pipeline.config import EXPECTED_FIELDS
+
+logger = logging.getLogger(__name__)
 
 
 def json_to_dataframe(products: List[Dict]) -> pd.DataFrame:
@@ -82,5 +85,9 @@ def clean_dataframe(df: pd.DataFrame) -> pd.DataFrame:
         subset=["product_name", "brands"], how="all"
     ).reset_index(drop=True)
 
+    logger.info(
+        "DataFrame nettoyé",
+        extra={"rows": len(cleaned), "columns": list(cleaned.columns)},
+    )
     return cleaned
 
